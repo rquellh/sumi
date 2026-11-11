@@ -4,8 +4,8 @@ herdr's own window on rice paper, with an ink painting beside the terminal. The 
 pane cards, Files and Changes panel and status bar are herdr's, in ink-black Hiragino Mincho on
 one warm paper color; the spaces and agents lists are herdr's own, redrawn in ink: letter stamps
 for spaces, ink and seal-red marks for agents. To the right of the terminal a 580 px panel of the
-same paper holds a tall sheet that the agent in view paints while it works, one stroke at a
-time: bamboo, misty mountains or a plum branch. When the agent needs you the brush lifts and an
+same paper holds a tall sheet whose painting advances while the agent in view works, one stroke
+at a time: bamboo, misty mountains or a plum branch. When the agent needs you the brush lifts and an
 empty red square waits in a lower corner; a prompt ending only rests the brush, so one painting
 runs across prompts; when the last stroke lands a red seal is stamped, and fresh paper follows
 20 s later if the agent is still working, else with its next prompt.

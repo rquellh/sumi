@@ -1,7 +1,7 @@
 # Sumi
 
-A herdr layout on rice paper, with an ink painting beside the terminal that your agent paints
-while it works.
+A herdr layout on rice paper, with an ink painting beside the terminal that advances while your
+agent works.
 
 ![Sumi](preview.png)
 
@@ -10,7 +10,9 @@ while it works.
 Sumi is herdr's own window (spaces and agents in the sidebar, tabs, pane cards, the Files and
 Changes panel, the status bar) set in ink on warm paper, with a tall sheet of the same paper to
 the right of the terminal. While an agent works, a sumi-e painting appears on it a stroke at a
-time: bamboo, misty mountains or a plum branch, never the subject that agent painted last.
+time: bamboo, misty mountains or a plum branch, never the subject that agent's last sheet had.
+The agent does not paint it: the mod draws the next stroke of a randomly seeded picture every few
+seconds while herdr reports the agent as working.
 
 When the agent needs you, the brush lifts and an empty red square waits in the corner. When a
 prompt ends, the painting waits for the next one. When its last stroke lands, a red seal is

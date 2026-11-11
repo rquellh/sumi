@@ -1,4 +1,5 @@
-// Ink painting: a tall sheet beside the terminal (or in any block) that paints while an agent works.
+// Ink painting: a tall sheet beside the terminal (or in any block) whose painting advances while an
+// agent works. The agent does not draw it: strokes come from a seeded generator, on a timer.
 //
 // It shows the sheet of the agent in the tab being looked at (else the most recently active one,
 // else empty paper). Each agent has its own sheet: a subject (bamboo, misty mountains or a plum
