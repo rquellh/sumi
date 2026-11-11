@@ -1,6 +1,6 @@
 <p align="center"><img src="images/logo.svg" alt="" width="96"></p>
 <h1 align="center">Sumi</h1>
-<h3 align="center">Ink that keeps time with your agents.</h3>
+<h3 align="center">The idea comes before the brush.</h3>
 <p align="center">
   A herdr layout on rice paper, with an ink painting beside the terminal that advances while your agent works.
   <br />
