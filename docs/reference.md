@@ -8,9 +8,7 @@ The [recipe](../RECIPE.md) is the brief for building Sumi from an empty folder.
 
 | Path | What it is |
 |---|---|
-| `layouts/sumi.json`, `sumi.svg` | the window, and its picture in herdr's settings: herdr's `main` layout with the ink block beside the terminals, the paper theme, a Mincho interface font, and no frame around a tab's only pane |
-| `themes/ink-paper.json` | the light palette the layout uses: `#efe7d6` paper, `#1c1917` ink, `#b3301f` seal red |
-| `themes/ink-night.json` | the night version: `#151413` ground, `#ddd7cb` ink, `#c8402f` seal red |
+| `layouts/sumi.json`, `sumi.svg` | the window, and its picture in herdr's settings: herdr's `main` layout with the ink block beside the terminals, the paper palette (`#efe7d6` paper, `#1c1917` ink, `#b3301f` seal red), a Mincho interface font, and no frame around a tab's only pane |
 | `mods/ink-painting` | the painting: a sheet per agent, its strokes, the seal and the empty square, the fold and the left fade |
 | `mods/sumi-spaces` | herdr's spaces list, redrawn: letter stamps, ink git counts and warnings |
 | `mods/sumi-agents` | herdr's agents list, redrawn: ink and seal-red status marks, ink headings |
@@ -20,15 +18,16 @@ status bar) is herdr's shipped mods, used from your install.
 
 ## Install, step by step
 
-1. Copy the themes: `themes/ink-paper.json` and `themes/ink-night.json` into
-   `~/.config/herdr-app/themes/`. herdr's gallery installer copies only `layouts/` and `mods/`,
-   so an agent installing Sumi has to be told to take the themes folder too.
-2. Copy `layouts/sumi.json` and `layouts/sumi.svg` into `~/.config/herdr-app/layouts/`.
-3. Move the three mod folders into `~/.config/herdr-app/mods/` with one `mv` (the README's
+1. Copy `layouts/sumi.json` and `layouts/sumi.svg` into `~/.config/herdr-app/layouts/`.
+2. Move the three mod folders into `~/.config/herdr-app/mods/` with one `mv` (the README's
    `.incoming` step): herdr docks a folder it sees before its `mod.json` exists.
-4. Check each mod: `herdr-app check mods/ink-painting`, `mods/sumi-spaces`, `mods/sumi-agents`.
-5. Switch: `herdr-app do layout.switch '{"name":"sumi"}'`. `herdr-app status` should show
+3. Check each mod: `herdr-app check mods/ink-painting`, `mods/sumi-spaces`, `mods/sumi-agents`.
+4. Switch: `herdr-app do layout.switch '{"name":"sumi"}'`. `herdr-app status` should show
    `"errors": []`.
+
+There is no theme file to copy. The layout names herdr's built-in `paper` theme and sets every
+color itself, in the root `colors` of `layouts/sumi.json`, because herdr's gallery installer
+copies only `layouts/` and `mods/` and a layout whose theme file is missing is not applied.
 
 If one of these names is taken, rename the new file or folder and every place that names it: the
 `mod` names in `layouts/sumi.json`, the `"ink-painting"` the fold looks for in
@@ -94,9 +93,9 @@ The painting's data is in `~/.config/herdr-app/ink/`, never inside a mod folder:
   edge), `fold_for` (the node whose showing hides the painting, `"panel"`; leave it out to keep
   the painting with the panel open), `fade_left` (how many px at the painting's left edge thin
   out to bare paper, 230; 0 for a hard edge).
-- **Dark paper:** `themes/ink-night.json` is the night version. Pick it in herdr's theme picker,
-  or follow the system with `"theme": { "light": "ink-paper", "dark": "ink-night" }` at the root
-  of `layouts/sumi.json`.
+- **The palette:** the root `colors` in `layouts/sumi.json` holds every color: the panels', the
+  terminal's 16 ANSI colors and the cursor. The mods read them through the theme, so changing a
+  color there changes it everywhere.
 - **The drawing**, in `paint.mjs`: when you change how anything is drawn, change `STYLE` in
   `main.js` too. herdr caches drawn files by path, so the old strokes would keep showing.
 
@@ -116,5 +115,4 @@ The painting's data is in `~/.config/herdr-app/ink/`, never inside a mod folder:
 ## Removing it
 
 Switch to another layout, then delete `layouts/sumi.json`, `layouts/sumi.svg`,
-`themes/ink-paper.json`, `themes/ink-night.json`, `mods/ink-painting/`, `mods/sumi-spaces/`,
-`mods/sumi-agents/` and `ink/`.
+`mods/ink-painting/`, `mods/sumi-spaces/`, `mods/sumi-agents/` and `ink/`.

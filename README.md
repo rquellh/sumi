@@ -40,13 +40,12 @@ none of them costs the agent anything.
 
 In herdr, ask your agent:
 
-> Add the Sumi layout from github.com/rquellh/herdr-sumi, with its themes folder.
+> Add herdr.dev/layouts/rquellh/sumi
 
 Or by hand, from a clone of this repo:
 
 ```sh
 H=~/.config/herdr-app
-cp themes/ink-paper.json themes/ink-night.json "$H/themes/"
 cp layouts/sumi.json layouts/sumi.svg "$H/layouts/"
 mkdir "$H/.incoming" && cp -R mods/* "$H/.incoming/" && mv "$H/.incoming"/* "$H/mods/" && rmdir "$H/.incoming"
 herdr-app do layout.switch '{"name":"sumi"}'

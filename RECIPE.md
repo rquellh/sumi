@@ -19,9 +19,9 @@ opened, the Files and Changes panel (368 px), which takes the painting's place. 
 terminals and the painting, the tab bar (42 px); under them, the status bar (28 px). No system
 title bar: the macOS window buttons sit at `[12, 16]`. The mods' text is Hiragino Mincho ProN
 (`ui_font`); the terminals use the person's own font (the layout sets none), padded `[14, 12]`.
-Colors below are theme names; the values are in **The themes** at the end of this section. The
-layout draws no column dividers: in `ink-paper` the sidebar, the terminals and the painting are
-all `#efe7d6`. In the two lists, red (`accent`) is kept for seal marks: the blocked and done
+Colors below are the theme's color names; their values are set in the layout itself (**The
+palette**, at the end of this section). The layout draws no column dividers: the sidebar, the
+terminals and the painting are all `#efe7d6`. In the two lists, red (`accent`) is kept for seal marks: the blocked and done
 squares and the words `needs you`.
 
 - **Sidebar**, 268 px (44 to 480), on `chrome`, not resizable by drag: herdr's
@@ -119,25 +119,18 @@ squares and the words `needs you`.
   `files` and `changes` in a stack, Files first.
 - **Status bar**, 28 px: herdr's `workspace-status`.
 
-**The themes.** `themes/ink-paper.json`, the layout's own: `background`, `canvas`, `surface` and
-`chrome` `#efe7d6`, `popover` and `raised` `#f4eddd`, `hover` `#e8dfcb`, `selected` `#e3d9c3`,
-`border` `#ddd3bd`, `input` `#c9bda3`, `foreground` `#1c1917`, `muted` `#6b6457`, `dim`
-`#948a78`, `accent` `#b3301f`, `accent_foreground` `#f4eddd`, `solid` `#1c1917`,
-`solid_foreground` `#efe7d6`, `selection` `#d9cfb8`; statuses `working` `#1c1917`, `blocked` and
-`done` `#b3301f`, `idle` `#948a78`, `unknown` `#b8ae99`. Terminals: background `#efe7d6`,
-foreground `#1c1917`, cursor `#b3301f`, selection `#d9cfb8`, ANSI `#1c1917 #a8321f #55683a
-#8a6a1c #3d5670 #6f4d68 #3f6b64 #b8ae99 #6b6457 #c0402b #6a7f49 #a17c22 #4f6c8c #86607e #4f8279
-#948a78`.
-
-`themes/ink-night.json`, the same paper at night (the layout doesn't name it; it is picked in
-herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`, `chrome`
-`#121110`, `popover` and `raised` `#1f1d1b`, `hover` `#262321`, `selected` `#2e2a27`, `border`
-`#2a2724`, `input` `#36322e`, `foreground` `#ddd7cb`, `muted` `#9a9388`, `dim` `#6e685f`,
-`accent` `#c8402f`, `accent_foreground` `#f3ede2`, `solid` `#ddd7cb`, `solid_foreground`
-`#151413`, `selection` `#3a3631`; statuses `working` `#b9b2a5`, `blocked` `#d9523f`, `done`
-`#8a9a6b`, `idle` `#6e685f`, `unknown` `#55504a`. Terminals: background `#151413`, foreground
-`#ddd7cb`, cursor `#c8402f`, selection `#3a3631`, ANSI `#24211f #c8503f #8a9a6b #c9a45c #7f93a8
-#a58aa0 #7fa39c #cfc8bb #5c564e #de6a57 #a3b383 #dcb872 #9aadc2 #bda2b8 #99bcb4 #f0eadf`.
+**The palette**, set in the root `colors` of `layouts/sumi.json` over herdr's built-in `paper`
+theme, which is only the base: every color is overridden. Panels: `background`, `canvas`,
+`surface` and `chrome` `#efe7d6`, `popover` and `raised` `#f4eddd`, `hover` `#e8dfcb`,
+`selected` `#e3d9c3`, `border` `#ddd3bd`, `input` `#c9bda3`, `foreground` `#1c1917`, `muted`
+`#6b6457`, `dim` `#948a78`, `accent` `#b3301f`, `accent_foreground` `#f4eddd`, `solid`
+`#1c1917`, `solid_foreground` `#efe7d6`, `selection` `#d9cfb8`; statuses `working` `#1c1917`,
+`blocked` and `done` `#b3301f`, `idle` `#948a78`, `unknown` `#b8ae99`. Terminals: `background`
+`#efe7d6`, `foreground` `#1c1917`, `selection` `#d9cfb8`, `cursor` `#b3301f`, and `ansi0` to
+`ansi15` `#1c1917 #a8321f #55683a #8a6a1c #3d5670 #6f4d68 #3f6b64 #b8ae99 #6b6457 #c0402b
+#6a7f49 #a17c22 #4f6c8c #86607e #4f8279 #948a78`. There is no dark version. The mods read
+every color through `theme()`, which returns these overrides; to change the palette, edit the
+root `colors`.
 
 ## How it behaves
 
@@ -193,8 +186,8 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
   layout as shipped: the tab bar (with its `+` menu and the Files and Changes buttons), the pane
   headers, the status bar. Dragging the boundary between the terminals and the painting resizes
   the painting.
-- **Status colors** in herdr's own tab bar and status bar come from the theme: in `ink-paper`,
-  `working` is the ink, `blocked` and `done` the seal red, `idle` `dim`.
+- **Status colors** in herdr's own tab bar and status bar come from the palette: `working` is
+  the ink, `blocked` and `done` the seal red, `idle` `dim`.
 - **What moves:** the strokes' and the seal's fades, the agents' breathing dots, and the tab
   bar's working spinner. The painting redraws only when what it shows changes: a stroke, the
   seal, the square, another sheet.
@@ -202,7 +195,8 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
 ## Built from
 
 - **Layout** (`layouts/sumi.json`, `"cloned_from": { "name": "main", "version": "0.1.15" }`): a
-  root `row` with `"theme": "ink-paper"`, `"ui_font": "Hiragino Mincho ProN"`,
+  root `row` with `"theme": "paper"`, `"colors": { … }` (the palette above, 23 panel colors,
+  `ansi0` to `ansi15` and `cursor`), `"ui_font": "Hiragino Mincho ProN"`,
   `"terminal_padding": [14, 12]`, `"background": "canvas"`, `"titlebar": "none"`,
   `"traffic_lights": [12, 16]`, `"preview": "layouts/sumi.svg"`, no divider:
   - `sidebar`, a column, 268 px (min 44, max 480), `chrome`, not resizable: `brand` (46 px,
@@ -218,7 +212,7 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
     368 px, min 280, max 900, `hidden`: `panel-body`, a stack, active `files`, of `files` and
     `changes`); `status` (28 px, `workspace-status`).
   - Against `main` 0.1.15: the `ink` block is new; `spaces` and `agents` show `sumi-spaces` and
-    `sumi-agents`; `theme`, `ui_font` and `preview` are set; the root's 1 px `border` divider is
+    `sumi-agents`; `theme` (`paper`), the root `colors`, `ui_font` and `preview` are set; the root's 1 px `border` divider is
     gone; `work-body` padding `8` became `[8, 0]` and its gap `8` became `0`; the pane radius
     `10` became `2`, the focus color `accent` became `muted`, and `"lone": true` is gone.
 - **`mods/sumi-spaces/`**: herdr's `spaces` mod, cloned (`mod.json` `{ "place": "none",
@@ -278,9 +272,12 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
     stroke is a centerline sampled every 8 units or so (6 to 44 segments) with a half-width at
     each point; it renders as a wet body plus 2 to 13 bristles, each its own load of ink,
     wandering a little and breaking up toward the end on a dry brush, a pooled start where the
-    brush was pressed, and an SVG filter of fractal noise (edge grain, as on rough paper), a 0.55
-    blur and a 2.6 blur at 20% as a bleed halo. Washes are seven bands blurred and mottled with
-    noise. `stepSvg`, `sealSvg` (variant 0 to 5), `waitSvg` and `paperSvg` write the files.
+    brush was pressed, and an SVG filter: fractal noise of 1 octave displacing the edges (grain,
+    as on rough paper), a 0.55 blur and a 2.6 blur at 20% as a bleed halo. Washes are seven
+    bands blurred and mottled with 2-octave noise. Each mark's filter region is that mark's own
+    box (`marksBox([m])`), and a step's dots share one filter over the dots' box; the file itself
+    is cropped to the whole step's box. `stepSvg`, `sealSvg` (variant 0 to 5), `waitSvg` and
+    `paperSvg` write the files.
     Sheet size `W = 720`, `H = 1400`; seal `SEAL = 46`.
   - `sheet.mjs`, pure: a sheet's life. `FAST_MS = [2500, 4000]`, `SLOW_MS = [3000, 5000]`,
     `HOLD_MS = 20000`, `ARCHIVE_MAX = 50`; `stepTimes` (each gap from a hash of the seed and the
@@ -292,8 +289,8 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
   box) and holding no color: only `fill-opacity`, so it is an alpha mask. The mod draws it with
   `svg(path)` at the box times the sheet's scale and tints it at draw time with `text_color`:
   `foreground` for `<step>.svg`, `accent` for `<step>a.svg`. That is why it is built this way:
-  herdr caches drawn files by path, so each file is written once and never changed; a theme
-  switch recolors every stroke with no new files; each step is its own element, so it can fade in
+  herdr caches drawn files by path, so each file is written once and never changed; a palette
+  change recolors every stroke with no new files; each step is its own element, so it can fade in
   on its own opacity. While the brush moves, the next stroke is already placed at opacity 0;
   when it is due its opacity turns to 1 and GPUI runs the 1400 ms fade natively, with no timer
   and no extra renders. The fade at the left edge is 4 px strips of `surface`, whole pixels that
@@ -319,13 +316,16 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
   machine), `hc machine ls --json`, and on Connect `hc machine rm` and `hc machine add`. None of
   the three uses `fetch`.
 - **Art:** `layouts/sumi.svg`, the 320×200 settings picture. Nothing else: every stroke, seal,
-  square and fiber is SVG that `paint.mjs` writes at run time, and the UI font is macOS's.
+  square and fiber is SVG that `paint.mjs` writes at run time, and the UI font is macOS's. (The
+  repo's `images/logo.svg`, for the README, is `sealSvg(0)` with `fill="#b3301f"`.)
 
 ## Watch out
 
 - herdr caches drawn files by path: a file rewritten at the same path keeps showing the old
   drawing. Every path carries `STYLE` (`s11` in `main.js`): change it whenever the drawing in
   `paint.mjs` changes. The sweep then deletes the old style's files.
+- Filter cost is per pixel in herdr's renderer, so keep each filter's region tight to its mark.
+  A region the size of the whole step made switching between agents slow.
 - Never write run-time data under `mods/`: herdr reloads a mod whose own files change, and every
   stroke would restart it. Everything goes to `<app home>/ink/`.
 - No per-frame timers: each redraw of a mod redraws the whole window. Strokes and the seal fade
@@ -335,8 +335,8 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
 - The ticker has to read statuses itself, not only the render: during the 20 s hold nothing on
   screen changes, so no render would come to start fresh paper.
 - A block can't draw outside its rectangle, so the painting can't sit behind the terminal. It is
-  a block beside it, and `fade_left` softens the join (in `ink-paper` the terminals' `background`
-  and the block's `surface` are the same `#efe7d6`).
+  a block beside it, and `fade_left` softens the join (the terminals' `background` and the
+  block's `surface` are both `#efe7d6`).
 - The mod runs only while Sumi is shown: another layout starts its own mods. Status changes in
   between are not seen; on return an agent still working counts the whole stretch, and one that
   stopped counts only until it was last seen (saved about once a minute).
@@ -351,15 +351,19 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
   and the layout's `mod` names.
 - The lists share herdr's shared state with the shipped mods: `agents.sort` is one setting for
   both, and `space.colors` is still kept up to date though Sumi draws no colors.
-- No literal colors in the lists: every color is a theme name, so `ink-night` restyles them too.
-  Keep `accent` to the seal marks.
+- No literal colors in the mods: every color is read through `theme()`, which returns the
+  layout's `colors`, so editing the palette restyles the lists and the painting together. Keep
+  `accent` to the seal marks.
 - `on_size_change` reports zoomed points; element sizes are layout px. Divide by
   `settings().zoom`. Before the first report the view assumes 268×360.
 - A sheet's stroke files have to exist before they are drawn: the view draws at most as many
   steps as are written, and the writer redraws every 12 files while it catches up.
-- Copy `themes/` and `layouts/sumi.svg` too: the installer steps copy only the layout file and
-  `mods/`, and without `themes/ink-paper.json` the layout falls back to herdr's default theme.
-  `ink-night` is not named by the layout.
+- The palette lives in the layout's root `colors`, not in a theme file. herdr's gallery
+  installer copies only `layouts/` and `mods/`, and a layout whose `theme` names a file missing
+  from `themes/` is not applied at all (herdr reports that the theme is not one of graphite,
+  ink, moss, paper and there is no `themes/<name>.json`). So `theme` is the built-in `paper`, as
+  a base, every color is overridden, and the repo has no `themes/` folder. Copy
+  `layouts/sumi.svg` with the layout file.
 - Move each mod folder into `mods/` in one rename: a folder herdr sees before its `mod.json`
   exists is docked into the shown layout.
 - Hiragino Mincho ProN is a macOS font; elsewhere herdr substitutes. The layout sets no terminal
@@ -404,6 +408,6 @@ herdr's theme picker): `background` and `canvas` `#151413`, `surface` `#1a1917`,
 - Two agents in two tabs each show their own sheet when their tab is selected.
 - Opening Files or Changes from the tab bar hides the painting within a second; closing the
   panel brings it back.
-- Picking `ink-night` in the theme picker redraws the same strokes in `#ddd7cb` and the seal in
-  `#c8402f` on `#1a1917`, and the stamps and marks in its colors, with no new stroke files.
+- Changing `accent` in the root `colors` of `layouts/sumi.json` recolors the seal, the empty
+  square, plum blossoms and the agents list's red marks, with no new stroke files.
 - Quitting herdr while the agent is idle and starting it again shows the same unfinished sheet.

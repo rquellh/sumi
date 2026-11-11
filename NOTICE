@@ -9,9 +9,10 @@ Apache License, Version 2.0. All of them are modified.
 
 - layouts/sumi.json: a clone of the shipped main layout. Modified: it adds the
   ink block beside the terminals, points the sidebar's spaces and agents blocks
-  at sumi-spaces and sumi-agents, sets the theme, the UI font and a settings
-  picture, drops the root divider, and changes the work area's padding and gap
-  and the pane frames' radius, focus color and lone setting.
+  at sumi-spaces and sumi-agents, sets herdr's built-in paper theme as a base
+  with the whole ink palette in its root colors, sets the UI font and a
+  settings picture, drops the root divider, and changes the work area's padding
+  and gap and the pane frames' radius, focus color and lone setting.
 - mods/sumi-spaces: a clone of the shipped spaces mod. Modified, in its drawing
   only: ink letter stamps (outlined, filled for the active space) instead of
   colored chips; the ahead/behind counts, the connection badge, the login and
@@ -36,4 +37,5 @@ install; they are not copied here.
 The ink painting's drawing code is original. Sumi bundles no fonts and no
 images from elsewhere: every stroke, seal, square and paper texture is an SVG
 the mod writes at run time, layouts/sumi.svg is the layout's own settings
-picture, and the UI font, Hiragino Mincho ProN, is the one macOS provides.
+picture, images/logo.svg is one of the mod's own seals (sealSvg(0), colored
+seal red), and the UI font, Hiragino Mincho ProN, is the one macOS provides.
