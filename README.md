@@ -15,10 +15,13 @@
 
 ## About
 
-Sumi sets herdr's own window in ink on warm paper. Everything herdr gives you is still there:
-spaces and agents in the sidebar, tabs, split panes, the Files and Changes panel, the status bar.
-To the right of the terminal is a tall sheet of the same paper, and while an agent works a
-sumi-e painting appears on it one stroke at a time: bamboo, misty mountains or a plum branch.
+Give your agent a prompt and a painting begins. On a tall sheet of paper beside the terminal, a
+sumi-e picture grows one stroke at a time for as long as the agent works: a stalk of bamboo,
+mountains in mist, or a plum branch climbing to the top of the page. A few minutes of work
+leaves you with a finished painting, stamped with a red seal.
+
+The rest is herdr's own window, set in ink on warm paper, with nothing taken away: spaces and
+agents in the sidebar, tabs, split panes, the Files and Changes panel, the status bar.
 
 The painting follows the agent in the tab you are looking at, and each agent has its own sheet.
 When the agent needs you, the brush lifts and an empty red square waits in the corner. When a
